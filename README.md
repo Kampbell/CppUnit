@@ -1,15 +1,15 @@
-CppUnit 1.5
+####CppUnit 1.5####
 
 Last Revision: 12/15/99 - Michael Feathers (mfeathers@acm.org) - written in standard C++, tested under Microsoft Visual C++ 6.0
 
 
 
 
-Background
+####Background####
 
 CppUnit is a simple unit test framework for C++. It is a port from JUnit, a testing framework for Java, developed by Kent Beck and Erich Gamma. 
 
-Contents
+####Contents####
 README.html                     this file
     
     test                        the source code
@@ -22,34 +22,34 @@ README.html                     this file
 				multicaster under test
     doc                         documentation
 
-Installation
+####Installation####
 
 To use the test framework, create a makefile or load all files in test\framework into your IDE. In this incarnation of CppUnit, all includes assume the current directory first. A makefile or project can be used to resolve the dependencies. 
 
 The directory test\textui contains a simple command line example that uses the framework.
 
-Documentation
+####Documentation####
 
 CppUnit comes with the following documentation: 
-•a cookbook: doc\cookbook.htm 
-•this file 
+â€¢a cookbook: doc\cookbook.htm 
+â€¢this file 
 
-Samples
+####Samples####
 
 You can find several sample test cases in the samples directory: 
-•ExampleTestCase - some simple tests 
-•Multicaster - test cases for a sample publish/subscribe multicaster class 
+â€¢ExampleTestCase - some simple tests 
+â€¢Multicaster - test cases for a sample publish/subscribe multicaster class 
 
 Also, the wiki page http://c2.com/cgi/wiki?ClassHierarchyTestingInCppUnit shows how to automatically apply tests of classes to the classes' subclasses.
 
-Extensions
+####Extensions####
 
 You can find several classes that illustrate framework extensions in the extensions directory: 
-•TestDecorator - A Decorator for Test. You can use it as the base class for decorators that extend test cases. 
-•TestSetup - A Decorator that can be used to set up and tear down additional fixture state. Subclass TestSetup and insert it into your tests when you want to set up additional state once before the test is run. 
-•Orthodox - a template class which can be used to verify operations on an arbitrary class.
+â€¢TestDecorator - A Decorator for Test. You can use it as the base class for decorators that extend test cases. 
+â€¢TestSetup - A Decorator that can be used to set up and tear down additional fixture state. Subclass TestSetup and insert it into your tests when you want to set up additional state once before the test is run. 
+â€¢Orthodox - a template class which can be used to verify operations on an arbitrary class.
 
-Notes
+####Notes####
 
 Porting this framework has been fun. I've tried to maintain the spirit and utility of JUnit in a C++ environment. Naturally, the move from Java to standard C++ forces out several nice JUnit features:
 1.Platform independent GUI.
@@ -68,7 +68,7 @@ I'd like to thank Kent Beck and Erich Gamma for the inspiration, design, and a w
 
 Thanks also to Fred Huls for mentioning the idea of template-based testing. The orthodox template class demonstrates only a small part of what can be done with templated test cases.
 
-History Of Changes
+####History Of Changes####
 
 1.2 -- Added the TestCaller template class. There is now no need to use the CPP_UNIT_TESTCASEDISPATCH macro unless you are using a C++ compiler which does not support templates well. CPP_UNIT_TESTCASEDISPATCH remains in TestCase.h for backward compatibility. I've also kept the use of the macro in the Multicaster sample to leave in an example.
 
