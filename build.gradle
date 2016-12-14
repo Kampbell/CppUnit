@@ -1,0 +1,49 @@
+apply plugin: 'cpp'
+
+model {
+	components {
+		CppUnit(NativeLibrarySpec) {
+			sources {
+				cpp {
+					source {
+						srcDir new File(projectDir, 'src')
+						include "*.cpp"
+					}
+					exportedHeaders {
+						srcDir new File(projectDir, 'include')
+					}
+				}
+			}
+		}
+	}
+	binaries {
+		all {
+			// Define a preprocessor macro for every binary
+			cppCompiler.define "NDEBUG"
+
+			// Define toolchain-specific compiler and linker options
+			if (toolChain in Gcc) {
+				cppCompiler.args "-O2", "-fno-access-control"
+				linker.args "-Xlinker", "-S"
+			}
+			if (toolChain in VisualCpp) {
+				cppCompiler.args "/FS"
+				cppCompiler.args "/EHsc"
+				cppCompiler.args "/Zi"
+				linker.args "/DEBUG"
+			}
+		}
+		withType(SharedLibraryBinarySpec) {
+			if (toolChain in VisualCpp) {
+				cppCompiler.args "/Zi"
+				cppCompiler.define "CppUnit_EXPORTS"
+			}
+		}
+		withType(StaticLibraryBinarySpec) {
+			if (toolChain in VisualCpp) {
+				cppCompiler.args "/Zi"
+				cppCompiler.define "POCO_STATIC"
+			}
+		}
+	}
+}
